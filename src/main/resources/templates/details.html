@@ -48,34 +48,29 @@
         </div>
 
         <div class="main-container">
-          <h1>Details for: </h1>
+          <h1 th:text="'Details for: ' + ${product.name}">Details for: </h1>
 
-          <table>                
+          <table class="details-table">                
             <tr>
-                <td>ID:</td>
-                <td th:text="${product.id}"></td>
+                <td class="detail-cell" style="width: 60px;">Type</td>
+                <td class="detail-cell" th:text="${product.type}"></td>
             </tr>
 
             <tr>
-                <td>Type</td>
-                <td th:text="${product.type}"></td>
+                <td class="detail-cell" style="width: 60px;">Price</td>
+                <td class="detail-cell" th:text="${product.price}"></td>
             </tr>
 
             <tr>
-                <td>Name</td>
-                <td th:text="${product.name}"></td>
+                <td class="detail-cell" style="width: 60px;">Details</td>
+                <td class="detail-cell" th:text="${product.details}"></td>
             </tr>
-
-            <tr>
-                <td>Price</td>
-                <td th:text="${product.price}"></td>
-            </tr>
-
-            <tr>
-                <td>Details</td>
-                <td th:text="${product.details}"></td>
-            </tr>
-        </table>
+          </table>
+        
+          <div class="details-buttons">
+            <a><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a>
+            <a href="/products"><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Go Back</button></a>
+          </div>
         </div>
     </body>
 </html>

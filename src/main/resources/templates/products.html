@@ -48,28 +48,28 @@
       </div>
 
       <div class="searchDiv">
+        <h1>Products</h1>
         <input type="text" id="searchInput" onkeyup="filterLookup()" placeholder="Search by name...">
       </div>
       <div class="products">
-
         <table id="productTable" class="product-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Stock</th>
-              <th style="width: 130px"></th>
-              <th style="width: 170px"></th>
+              <th class="prod-cell">Name</th>
+              <th class="prod-cell">Price</th>
+              <th class="prod-cell">Stock</th>
+              <th class="prod-cell" style="width: 130px"></th>
+              <th class="prod-cell" style="width: 170px"></th>
             </tr>
           </thead>
 
           <tbody>
             <tr th:each="product : ${products}" th:id="|row_${product.id}">
-              <td th:text="${product.name}"></td>
-              <td th:text="${product.price}"></td>
-              <td>5</td>
-              <td><a th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
-              <td><a><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a></td>
+              <td class="prod-cell" th:text="${product.name}"></td>
+              <td class="prod-cell" th:text="${product.price}"></td>
+              <td class="prod-cell">5</td>
+              <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
+              <td class="prod-cell"><a><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a></td>
             </tr>
           </tbody>
         </table>        
