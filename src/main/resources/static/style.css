@@ -41,38 +41,44 @@ html body {
     margin-bottom: 10px;
 }
 
-/* Style the counter cards */
-.products .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  padding: 16px;
-  text-align: center;
-  background-color: #212121;
+
+.products {
+    width: 100%;
 }
 
-.products img {
-    border-radius: 5px;
-    width: 230px;
-    height: auto;
-}
-
-.products .row {
-    margin: 30px;
-}
-
-.products .prd-btn {
-    width: 95%;
+.searchDiv {
     margin: auto;
+    width: 50%;
+}
+
+.searchDiv input {
+    text-align: center;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .products .product-table {
-    
     width: 50%;
     margin: auto;
 }
 
-.products .product-table th, td {
+.products .product-table th {
+    background-color: #191919;
+}
 
-    border: 1px solid black;
+.products .product-table td {
+    background-color: #212121;
+}
+
+.products .product-table th, td {
+    border-bottom: 1px solid #000;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    padding-left: 10px;
+    padding-right: 10px;
     border-collapse: collapse;
 }
 
