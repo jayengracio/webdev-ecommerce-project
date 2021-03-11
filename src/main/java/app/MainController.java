@@ -28,29 +28,35 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model) {
-        if (!loggedIn)
-        return "index.html";
+        if (loggedIn) model.addAttribute("user", loggedUser);
+        else model.addAttribute("user", userRepository.findById(1).get());
 
-        model.addAttribute("user", loggedUser);
         return "home.html";
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        if (loggedIn) model.addAttribute("user", loggedUser);
+        else model.addAttribute("user", userRepository.findById(1).get());
+
         return "login.html";
     }
 
     @PostMapping("/login")
     public String loggedIn(HttpServletResponse response, @RequestParam String username, @RequestParam String password, Model model) {
+        if (loggedIn) model.addAttribute("user", loggedUser);
+        else model.addAttribute("user", userRepository.findById(1).get());
+
         List<User> users = userRepository.findAll();
         
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                loggedUser.setPassword(user.getPassword());
-                loggedUser.setUsername(user.getUsername());
-                loggedUser.setId(user.getId());
-
+                loggedUser = userRepository.findById(user.getId()).get();
                 loggedIn = true;
+
+                if (loggedUser == userRepository.findById(1).get())
+                loggedIn = false;
+
                 try {
                     response.sendRedirect("/");
                 } catch (IOException e) {
@@ -73,13 +79,11 @@ public class MainController {
         }
     }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile.html";
-    }
-
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+        if (loggedIn) model.addAttribute("user", loggedUser);
+        else model.addAttribute("user", userRepository.findById(1).get());
+
         return "register.html";
     }
 
@@ -98,8 +102,11 @@ public class MainController {
     }
     
     @GetMapping("/products")
-    public String products(Model model) {
-        model.addAttribute("products", productRepository.findAll());
+    public String products(Model productModel, Model userModel) {
+        if (loggedIn) userModel.addAttribute("user", loggedUser);
+        else userModel.addAttribute("user", userRepository.findById(1).get());
+
+        productModel.addAttribute("products", productRepository.findAll());
         return "products.html";
     }
 
@@ -109,14 +116,30 @@ public class MainController {
         return product;
     }
 
-    @GetMapping("/cart")
-    public String cart() {
+    @GetMapping("/products/addtocart/{id}")
+        public void addToCart(@PathVariable("id") int id, Model model, HttpServletResponse response) throws IOException {
+            if (loggedIn) {
+                Product product = productRepository.findById(id).get();
+                User user = userRepository.findById(loggedUser.getId()).get();
+                int stock = product.getStock()-1;
+                user.cart.add(product);
+                product.setStock(stock);
+                userRepository.save(user);
+                productRepository.save(product);
+                response.sendRedirect("/products");
+            } else response.sendRedirect("/products");
+        }
+
+    @GetMapping("/cart/{id}")
+    public String cart(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userRepository.findById(id).get());
         return "cart.html";
     }
 
     @GetMapping("/details/{id}")
-    public String details(@PathVariable("id") int id, Model model) {
-        model.addAttribute("product", productRepository.findById(id).get());
+    public String details(@PathVariable("id") int id, Model productModel, Model userModel) {
+        userModel.addAttribute("user", loggedUser);
+        productModel.addAttribute("product", productRepository.findById(id).get());
         return "details.html";
     }
 }
