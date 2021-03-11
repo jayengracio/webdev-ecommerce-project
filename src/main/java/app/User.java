@@ -1,10 +1,14 @@
 package app;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
@@ -21,11 +25,17 @@ public class User {
     @Column
     private boolean owner;
 
-    private Product[] cart;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    List<Product> cart;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+    }
+
+    public User(int id, String username) {
+        this.id = id;
+        this.username = username;
     }
 
     public User() {}
@@ -42,15 +52,19 @@ public class User {
 
     public void setPassword(String password) { this.password = password; }
 
-    public Product[] getCart() { return cart; }
-
-    public void setCart(Product[] cart) { this.cart = cart; }
-
     public boolean isOwner() {
         return owner;
     }
 
     public void setOwner(boolean owner) {
         this.owner = owner;
+    }
+
+    public List<Product> getCart() {
+        return cart;
+    }
+
+    public void setCart(List<Product> cart) {
+        this.cart = cart;
     }
 }
