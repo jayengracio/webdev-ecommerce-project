@@ -19,6 +19,9 @@ public class Product {
     private String name;
 
     @Column
+    private int stock;
+
+    @Column
     private String details;
 
     @Column
@@ -62,5 +65,13 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
