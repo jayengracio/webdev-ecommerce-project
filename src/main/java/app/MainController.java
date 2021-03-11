@@ -78,6 +78,9 @@ public class MainController {
         return "profile.html";
     }
 
+    @GetMapping("/owners")
+    public String owners(){ return "owners.html";}
+
     @GetMapping("/register")
     public String register() {
         return "register.html";

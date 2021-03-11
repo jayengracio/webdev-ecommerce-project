@@ -107,3 +107,16 @@ html body {
     margin-bottom: 10px;
     padding: 15px;
 }
+
+.main-container .owners-form {
+    width: 50%;
+    margin: auto;
+}
+
+.main-container .owners-form .form label{
+    float: left;
+}
+
+.main-container .owners-form .form input{
+    float: right;
+}
