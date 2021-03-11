@@ -1,18 +1,34 @@
 package app;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.annotation.SessionScope;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-import java.util.Date;
-
-public class User implements java.io.Serializable{
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column
     private String username;
+
+    @Column
     private String password;
+
+    @Column
+    private boolean owner;
+
     private Product[] cart;
 
-    public User(){}
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
+    public User() {}
 
     public int getId() { return id; }
 
@@ -30,5 +46,11 @@ public class User implements java.io.Serializable{
 
     public void setCart(Product[] cart) { this.cart = cart; }
 
+    public boolean isOwner() {
+        return owner;
+    }
 
+    public void setOwner(boolean owner) {
+        this.owner = owner;
+    }
 }
