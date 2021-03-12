@@ -31,14 +31,18 @@ public class MainController {
         if (loggedIn) model.addAttribute("user", loggedUser);
         else model.addAttribute("user", userRepository.findById(1).get());
 
-        return "home.html";
+        return "index.html";
     }
 
     @GetMapping("/login")
     public String login(Model model) {
-        if (loggedIn) model.addAttribute("user", loggedUser);
-        else model.addAttribute("user", userRepository.findById(1).get());
+        if (loggedIn) {
+            model.addAttribute("user", loggedUser);
+            if (loggedUser.isOwner()) return "owners.html";
+            else return "profile.html";
+        }
 
+        else model.addAttribute("user", userRepository.findById(1).get());
         return "login.html";
     }
 
@@ -68,7 +72,7 @@ public class MainController {
         return "loginfailure.html";
     }
 
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public void logout(HttpServletResponse response) {
         loggedUser = new User();
         loggedIn = false;

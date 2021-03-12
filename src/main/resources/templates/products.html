@@ -65,9 +65,9 @@
 
           <tbody>
             <tr th:each="product : ${products}" th:id="|row_${product.id}">
-              <td class="prod-cell" name="name" th:text="${product.name}"></td>
-              <td class="prod-cell" name="price" th:text="'€' + ${product.price}"></td>
-              <td class="prod-cell" name="stock" th:text="${product.stock}"></td>
+              <td class="prod-cell" th:text="${product.name}"></td>
+              <td class="prod-cell" th:text="'€' + ${product.price}"></td>
+              <td class="prod-cell" th:text="${product.stock}"></td>
               <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
               <td class="prod-cell"><a th:href="@{/products/addtocart/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a></td>
             </tr>

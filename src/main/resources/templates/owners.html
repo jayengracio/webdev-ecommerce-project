@@ -47,17 +47,20 @@
 
 <div class="main-container">
     <div class="owners-form">
-        <form class="form" action="/product/add" method="post">
-            <label for="product_name">Product Name:</label>
-            <input type="text" id="product_name" name="product_name"><br><br>
+        <form>
+            <label for="name">Type:</label>
+            <input type="text" id="type" name="type"><br><br>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br><br>
             <label for="price">Price:</label>
             <input type="text" id="price" name="price"><br><br>
             <label for="details">Details:</label>
-            <input type="text" id="details" name="price"><br><br>
+            <input type="text" id="details" name="details"><br><br>
             <label for="stock">Stock:</label>
-            <input type="text" id="stock" name="price"><br><br>
-            <div class="log-btns text-center"><input class="login-btn btn btn-success btn-block" type="submit" value="Submit"></div>
+            <input type="text" id="stock" name="stock"><br><br>
+            <div class="log-btns text-center"><button class="login-btn btn btn-success btn-block" onclick="addProduct()">Add Product</button></div>
         </form>
+        <a href="/logout"><button type="submit" class="login-btn btn btn-success btn-block">Log Out</button></a>
     </div>
 </div>
 </body>

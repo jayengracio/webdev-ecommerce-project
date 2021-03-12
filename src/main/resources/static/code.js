@@ -1,3 +1,53 @@
+function addProduct() {
+    var record = {
+        type : document.getElementById("type").value,
+        name : document.getElementById("name").value,
+        price : document.getElementById("price").value,
+        details : document.getElementById("details").value,
+        stock : document.getElementById("stock").value,
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", insertProductIntoTable);
+    xhr.open("POST", "/product/add");
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(JSON.stringify(record));
+}
+
+function removeProduct(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", removeProductFromCart);
+    xhr.open("GET", "/cart/remove?id="+id);
+    xhr.send();
+}
+
+function removeProductFromCart() {
+    var id = this.responseText;
+    var table = document.getElementById("cartTable");
+    var row = document.getElementById("row_" + id);
+    table.deleteRow(row.rowIndex);
+}
+
+function insertProductIntoTable() {
+    var record = JSON.parse(this.responseText);
+
+    var table = document.getElementById("productTable");
+    var rows = table.querySelectorAll("tr");
+
+    var new_row = table.insertRow(rows.length-1);
+    new_row.id = "row_"+record.id;
+    var name_cell = new_row.insertCell(0);
+    var price_cell = new_row.insertCell(1);
+    var stock_cell = new_row.insertCell(2);
+    name_cell.innerHTML = record.name;
+    price_cell.innerHTML = record.price;
+    stock_cell.innerHTML = record.stock;
+    document.getElementById("name").value="";
+    document.getElementById("price").value="";
+    document.getElementById("stock").value="";
+    document.getElementById("details").value="";
+}
+
 function filterLookup() {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
@@ -17,53 +67,3 @@ function filterLookup() {
         }
     }
 }
-
-function addProduct() {
-    var record = {
-        type : document.getElementById("type").value,
-        name : document.getElementById("name").value,
-        name : document.getElementById("details").value,
-        name : document.getElementById("price").value,
-    };
-
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", insertPersonIntoTable);
-    xhr.open("POST", "/product/add");
-    xhr.setRequestHeader('Content-type', 'application/json');
-    xhr.send(JSON.stringify(record));
-}
-
-
-function removeProduct(id) {
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", removeProductFromCart);
-    xhr.open("GET", "/cart/remove?id="+id);
-    xhr.send();
-}
-
-function removeProductFromCart() {
-    var id = this.responseText;
-    var table = document.getElementById("cartTable");
-    var row = document.getElementById("row_" + id);
-    table.deleteRow(row.rowIndex);
-}
-
-/* function insertPersonIntoTable() {
-    var record = JSON.parse(this.responseText);
-
-    var table = document.getElementById("productTable");
-    var rows = table.querySelectorAll("tr");
-
-    var new_row = table.insertRow(rows.length-1);
-    new_row.id = "row_"+record.id;
-    var name_cell = new_row.insertCell(0);
-    var price_cell = new_row.insertCell(1);
-    var detail_cell = new_row.insertCell(2);
-    var addCart_cell = new_row.insertCell(3);
-    name_cell.innerHTML = record.name;
-    price_cell.innerHTML = record.price;
-    detail_cell.innerHTML = "<button>Detail</button>"
-    addCart_cell.innerHTML = "<button>Add to Cart</button>"
-    document.getElementById("name").value="";
-    document.getElementById("price").value="";
-} */
