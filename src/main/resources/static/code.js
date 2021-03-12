@@ -33,22 +33,7 @@ function addProduct() {
     xhr.send(JSON.stringify(record));
 }
 
-
-function removeProduct(id) {
-    var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", removeProductFromCart);
-    xhr.open("GET", "/cart/remove?id="+id);
-    xhr.send();
-}
-
-function removeProductFromCart() {
-    var id = this.responseText;
-    var table = document.getElementById("cartTable");
-    var row = document.getElementById("row_" + id);
-    table.deleteRow(row.rowIndex);
-}
-
-/* function insertPersonIntoTable() {
+function insertPersonIntoTable() {
     var record = JSON.parse(this.responseText);
 
     var table = document.getElementById("productTable");
@@ -66,4 +51,4 @@ function removeProductFromCart() {
     addCart_cell.innerHTML = "<button>Add to Cart</button>"
     document.getElementById("name").value="";
     document.getElementById("price").value="";
-} */
+}

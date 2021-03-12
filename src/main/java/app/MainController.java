@@ -109,32 +109,8 @@ public class MainController {
         return product;
     }
 
-    @GetMapping("/products/addtocart/{id}")
-    public void addToCart(@PathVariable("id") int id, Model model, HttpServletResponse response) throws IOException {
-        if (loggedIn) {
-            Product product = productRepository.findById(id).get();
-            User user = userRepository.findById(loggedUser.getId()).get();
-            int stock = product.getStock()-1;
-            user.cart.add(product);
-            product.setStock(stock);
-            userRepository.save(user);
-            productRepository.save(product);
-            response.sendRedirect("/products");
-        } else response.sendRedirect("/products");
-    }
-
-    @GetMapping("/cart/remove")
-    public @ResponseBody Integer removeProduct(@RequestParam Integer id) {
-        User user = userRepository.findById(loggedUser.getId()).get();
-        Product product = productRepository.findById(id).get();
-        user.getCart().remove(product);
-        userRepository.save(user);
-        return id;
-    }
-
-    @GetMapping("/cart/{id}")
-    public String cart(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userRepository.findById(id).get());
+    @GetMapping("/cart")
+    public String cart() {
         return "cart.html";
     }
 

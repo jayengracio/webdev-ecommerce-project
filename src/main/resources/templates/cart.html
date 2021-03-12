@@ -50,25 +50,23 @@
       <div class="main-container">
         <h1 th:text="'Checkout cart: ' + ${user.username}">Cart for: </h1>
 
-        <div class="cart">
-        <table id="cartTable" class="cart-table">
+        <div class="products">
+        <table id="productTable" class="product-table">
           <thead>
             <tr>
-              <th class="cart-cell">ID</th>
-              <th class="cart-cell">Name</th>
-              <th class="cart-cell">Price</th>
-              <th class="cart-cell" style="width: 130px"></th>
-              <th class="cart-cell" style="width: 170px"></th>
+              <th class="prod-cell">Name</th>
+              <th class="prod-cell">Price</th>
+              <th class="prod-cell" style="width: 130px"></th>
+              <th class="prod-cell" style="width: 170px"></th>
             </tr>
           </thead>
 
           <tbody>
-            <tr th:each="product : ${user.cart}" th:id="|row_${product.id}|">
-              <td class="cart-cell" th:text="${product.id}"></td>
-              <td class="cart-cell" th:text="${product.name}"></td>
-              <td class="cart-cell" th:text="${product.price}"></td>
-              <td class="cart-cell"><a  th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
-              <td class="cart-cell"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button" th:onclick="|removeProduct(${product.id})|">Remove</button></td>
+            <tr th:each="product : ${user.cart}">
+              <td class="prod-cell" th:text="${product.name}"></td>
+              <td class="prod-cell" th:text="${product.price}"></td>
+              <td class="prod-cell"><a  th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
+              <td class="prod-cell"><a><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Remove</button></a></td>
             </tr>
           </tbody>
         </table> 

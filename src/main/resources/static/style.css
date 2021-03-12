@@ -81,33 +81,7 @@ html body {
     border-collapse: collapse;
 }
 
-.cart .prod-button {
-    width: 100%;
-}
-
-.cart .cart-table {
-    width: 50%;
-    margin: auto;
-}
-
-.cart .cart-table th {
-    background-color: #191919;
-}
-
-.cart .cart-table td {
-    background-color: #212121;
-}
-
-.cart .cart-table .cart-cell {
-    border-bottom: 1px solid #000;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-collapse: collapse;
-}
-
-.cart .cart-button {
+.products .prod-button {
     width: 100%;
 }
 
