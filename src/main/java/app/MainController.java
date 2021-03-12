@@ -148,10 +148,12 @@ public class MainController {
         return id;
     }
 
-    @GetMapping("/cart/{id}")
-    public String cart(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userRepository.findById(id).get());
-        return "cart.html";
+    @GetMapping("/cart")
+    public String cart(Model model) {
+        if (loggedIn) {
+            model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
+            return "cart.html";
+        } else return "no.html";
     }
 
     @GetMapping("/details/{id}")
