@@ -162,4 +162,15 @@ public class MainController {
         productModel.addAttribute("product", productRepository.findById(id).get());
         return "details.html";
     }
+
+    @GetMapping("/checkout")
+    public String checkout(Model model) {
+        model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
+        return "checkout.html";
+    }
+
+    @GetMapping("/purchase")
+    public String purchase() {
+        return "purchase.html";
+    }
 }
