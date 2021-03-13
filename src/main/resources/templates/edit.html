@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Product Details</title>
+  <title>Edit Product</title>
   <meta charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="/style.css">
@@ -52,30 +52,40 @@
   <div class="main-container">
     <h1 th:text="'Details for: ' + ${product.name}">Details for: </h1>
 
-    <table class="details-table">
-      <tr>
-        <td class="detail-cell" style="width: 60px;">ID</td>
-        <td class="detail-cell" th:text="${product.id}"></td>
-      </tr>
+    <form method="POST" action="/edit/product">
+        <table class="details-table">
+            <tr>
+                <td class="detail-cell" style="width: 60px;">ID</td>
+                <td class="detail-cell" th:text="${product.id}"></td>
+            </tr>
+    
+            <tr>
+                <td class="detail-cell" style="width: 60px;">Type</td>
+                <td class="detail-cell" th:text="${product.type}"></td>
+            </tr>
+    
+            <tr>
+                <td class="detail-cell" style="width: 60px;">Price</td>
+                <td class="detail-cell"><input type="text" id="price" placeholder="New price" name="price"></td>
+            </tr>
+    
+            <tr>
+                <td class="detail-cell" style="width: 60px;">Details</td>
+                <td class="detail-cell"><input type="text" id="details" placeholder="New details" name="details"></td>
+            </tr>
 
-      <tr>
-        <td class="detail-cell" style="width: 60px;">Type</td>
-        <td class="detail-cell" th:text="${product.type}"></td>
-      </tr>
+            <tr>
+                <td class="detail-cell" style="width: 60px;">Stock</td>
+                <td class="detail-cell"><input type="text" id="stock" placeholder="New stock" name="stock"></td>
+            </tr>
 
-      <tr>
-        <td class="detail-cell" style="width: 60px;">Price</td>
-        <td class="detail-cell" th:text="'€' + ${product.price}"></td>
-      </tr>
-
-      <tr>
-        <td class="detail-cell" style="width: 60px;">Details</td>
-        <td class="detail-cell" th:text="${product.details}"></td>
-      </tr>
-    </table>
+            <tr>
+                <td><a><button class="prd-btn btn btn-sm btn-success" type="submit" onclick="editProduct()">Done</button></a></td>
+            </tr>
+        </table>
+    </form>
 
     <div class="details-buttons">
-      <a><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a>
       <a href="/products"><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Go Back</button></a>
     </div>
   </div>

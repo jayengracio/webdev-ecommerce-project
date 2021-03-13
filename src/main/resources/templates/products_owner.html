@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Your Orders</title>
+  <title>Products as Owner</title>
   <meta charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="style.css">
@@ -50,23 +50,36 @@
   </div>
 
   <div class="searchDiv">
-    <h1 th:text="'Order History: ' + ${user.username}"></h1>
+    <h1>Products</h1>
+    <input type="text" id="searchType" onkeyup="filterByType()" placeholder="Search by type...">
+    <input type="text" id="searchName" onkeyup="filterByName()" placeholder="Search by name...">
   </div>
+
   <div class="products">
     <table id="productTable" class="product-table">
       <thead>
         <tr>
-          <th class="prod-cell">Type</th>
-          <th class="prod-cell">Name</th>
-          <th class="prod-cell">Price</th>
+          <th class="prod-cell" style="width: auto">Type</th>
+          <th class="prod-cell" style="width: auto">Name</th>
+          <th class="prod-cell" style="width: auto">Price</th>
+          <th class="prod-cell" style="width: auto">Stock</th>
+          <th class="prod-cell" style="width: 130px"></th>
+          <th class="prod-cell" style="width: 170px"></th>
+          <th class="prod-cell" style="width: 130px"></th>
+          <th class="prod-cell" style="width: 130px"></th>
         </tr>
       </thead>
 
       <tbody>
-        <tr th:each="product : ${user.orders}" th:id="|row_${product.id}">
+        <tr th:each="product : ${products}" th:id="|row_${product.id}">
           <td class="prod-cell" th:text="${product.type}"></td>
           <td class="prod-cell" th:text="${product.name}"></td>
           <td class="prod-cell" th:text="'€' + ${product.price}"></td>
+          <td class="prod-cell" th:text="${product.stock}"></td>
+          <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
+          <td class="prod-cell"><a th:href="@{/products/addtocart/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a></td>
+          <td class="prod-cell"><a th:href="@{/edit/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Edit</button></a></td>
+          <td class="prod-cell"><a><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button" th:onclick="|hideProduct(${product.id})|">Hide</button></a></td>
         </tr>
       </tbody>
     </table>

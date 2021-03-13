@@ -8,8 +8,20 @@ function addProduct() {
     };
 
     var xhr = new XMLHttpRequest();
-    xhr.addEventListener("load", insertProductIntoTable);
     xhr.open("POST", "/product/add");
+    xhr.setRequestHeader('Content-type', 'application/json');
+    xhr.send(JSON.stringify(record));
+}
+
+function editProduct() {
+    var record = {
+        price: document.getElementById("price").value,
+        details: document.getElementById("details").value,
+        stock: document.getElementById("stock").value,
+    };
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/edit/product");
     xhr.setRequestHeader('Content-type', 'application/json');
     xhr.send(JSON.stringify(record));
 }
@@ -26,26 +38,6 @@ function removeProductFromCart() {
     var table = document.getElementById("cartTable");
     var row = document.getElementById("row_" + id);
     table.deleteRow(row.rowIndex);
-}
-
-function insertProductIntoTable() {
-    var record = JSON.parse(this.responseText);
-
-    var table = document.getElementById("productTable");
-    var rows = table.querySelectorAll("tr");
-
-    var new_row = table.insertRow(rows.length - 1);
-    new_row.id = "row_" + record.id;
-    var name_cell = new_row.insertCell(0);
-    var price_cell = new_row.insertCell(1);
-    var stock_cell = new_row.insertCell(2);
-    name_cell.innerHTML = record.name;
-    price_cell.innerHTML = record.price;
-    stock_cell.innerHTML = record.stock;
-    document.getElementById("name").value = "";
-    document.getElementById("price").value = "";
-    document.getElementById("stock").value = "";
-    document.getElementById("details").value = "";
 }
 
 function filterByName() {
@@ -87,4 +79,18 @@ function filterByType() {
         }
     }
 }
+
+function hideProduct(id) {
+    var xhr = new XMLHttpRequest();
+    xhr.addEventListener("load", hideProductFromList);
+    xhr.open("GET", "/hide/product?id=" + id);
+    xhr.send();
+}
+
+function hideProductFromList() {
+    var id = this.responseText;
+    var table = document.getElementById("productTable");
+    var row = document.getElementById("row_" + id);
+    table.deleteRow(row.rowIndex);
+  }
 
