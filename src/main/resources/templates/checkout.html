@@ -106,11 +106,11 @@
             <table id="cartTable" class="cart-table">
                 <thead>
                     <tr>
-                        <th class="cart-cell">ID</th>
-                        <th class="cart-cell">Name</th>
-                        <th class="cart-cell">Price</th>
-                        <th class="cart-cell" style="width: 130px"></th>
-                        <th class="cart-cell" style="width: 170px"></th>
+                        <th class="cart-cell" style="width: 20px">ID</th>
+                        <th class="cart-cell" style="width: auto">Name</th>
+                        <th class="cart-cell" style="width: auto">Price</th>
+                        <th class="cart-cell" style="width: 80px"></th>
+                        <th class="cart-cell" style="width: 80px"></th>
                     </tr>
                 </thead>
 
@@ -119,8 +119,8 @@
                         <td class="cart-cell" th:text="${product.id}"></td>
                         <td class="cart-cell" th:text="${product.name}"></td>
                         <td class="cart-cell" th:text="'€' + ${product.price}"></td>
-                        <td class="cart-cell"><a  th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
-                        <td class="cart-cell"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button" th:onclick="|removeProduct(${product.id})|">Remove</button></td>
+                        <td class="cart-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button class="btn btn-sm btn-success btn-block ckout-btn" type="button">Details</button></a></td>
+                        <td class="cart-cell"><button class="btn btn-sm btn-success btn-block ckout-btn" type="button" th:onclick="|removeProduct(${product.id})|">Remove</button></td>
                     </tr>
                 </tbody>
             </table>

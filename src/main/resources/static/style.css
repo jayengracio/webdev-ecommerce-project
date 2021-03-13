@@ -139,18 +139,25 @@ html body {
     margin-bottom: 10px;
     padding: 15px;
 }
-
-.main-container .owners-form {
-    width: 50%;
-    margin: auto;
+.owners-form {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: #212121;
+    width: 20%;
+    margin-left: 10px;
+    padding: 20px;
 }
 
-.main-container .owners-form .form label{
-    float: left;
+.owners-form .owner-label{
+    border: 1px solid black;
+    padding: 10px;
+
 }
 
-.main-container .owners-form .form input{
-    float: right;
+.owners-form .owner-input{
+    border-radius: 7px;
+    border: 1px solid black;
+    padding: 10px;
 }
 
 .main-container .profile-card {
@@ -206,8 +213,8 @@ html body {
 }
 
 .col-75 {
-    -ms-flex: 75%;
-    flex: 75%;
+    -ms-flex: 50%;
+    flex: 50%;
 }
 
 .col-25,
@@ -257,5 +264,24 @@ html body {
 .ckout-container span.price {
     float: right;
     color: grey;
+}
+
+.forbid-box {
+    border-radius: 20px;
+    background-color: #212121;
+    width: 75%;
+    padding: 10%;
+    margin: auto;
+}
+
+.forbid-box h1 {
+    padding-bottom: 50px;
+}
+
+.forbid-box .forbid-btn {
+    width: 30%;
+    font-size: 25px;
+    margin: auto;
+    padding: 10px;
 }
 

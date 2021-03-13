@@ -180,5 +180,5 @@ public class MainController {
     public String orders(Model model) {
         model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
         return "orders.html";
-    }
+    }   
 }
