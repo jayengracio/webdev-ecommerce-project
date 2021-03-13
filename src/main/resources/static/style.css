@@ -139,19 +139,22 @@ html body {
     margin-bottom: 10px;
     padding: 15px;
 }
+
 .owners-form {
+    margin: auto;
+    float: right;
+    width: 50%;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: #212121;
-    width: 20%;
-    margin-left: 10px;
     padding: 20px;
+}
+.owners-form:hover{
+    box-shadow: 0 16px 24px 0 rgba(0,0,0,0.2);
 }
 
 .owners-form .owner-label{
-    border: 1px solid black;
     padding: 10px;
-
 }
 
 .owners-form .owner-input{

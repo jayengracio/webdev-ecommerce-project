@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,6 +24,8 @@ public class MainController {
     @Autowired
     private UserRepository userRepository;
 
+    private List<Product> newProducts = new ArrayList<>();
+
     private User loggedUser = new User();
     private boolean loggedIn;
     private Product tempProduct = new Product();
@@ -42,7 +45,7 @@ public class MainController {
         if (loggedIn) {
             model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
             if (loggedUser.isOwner())
-                return "owners.html";
+                return "/owners";
             else
                 return "profile.html";
         }
@@ -118,6 +121,12 @@ public class MainController {
         }
     }
 
+    @GetMapping("/owners")
+    public String owners(Model productModel){
+        productModel.addAttribute("newProduct", productRepository);
+        return "owners.html";
+    }
+
     @GetMapping("/products")
     public String products(Model productModel, Model userModel) {
         productModel.addAttribute("products", productRepository.findAll());
@@ -134,6 +143,7 @@ public class MainController {
     @PostMapping("/product/add")
     public @ResponseBody Product addProduct(@RequestBody Product product) {
         productRepository.save(product);
+        newProducts.add(product);
         return product;
     }
 
