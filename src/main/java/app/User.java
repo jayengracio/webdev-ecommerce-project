@@ -25,10 +25,10 @@ public class User {
     @Column
     private boolean owner;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = { CascadeType.ALL })
     List<Product> cart;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = { CascadeType.ALL })
     List<Product> orders;
 
     public User(String username, String password) {
@@ -41,19 +41,32 @@ public class User {
         this.username = username;
     }
 
-    public User() {}
+    public User() {
+    }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getUsername() { return username; }
+    public String getUsername() {
+        return username;
+    }
 
-    public void setUsername(String username) { this.username = username; }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-    public String getPassword() { return password; }
+    public String getPassword() {
+        return password;
+    }
 
-    public void setPassword(String password) { this.password = password; }
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public boolean isOwner() {
         return owner;

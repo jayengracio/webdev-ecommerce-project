@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 
 <html lang="en">
-    <head>
-        <title>Details</title>
-        <meta charset="utf-8">
 
-        <link rel="stylesheet" type="text/css" href="/style.css">
-        <script type="text/javascript" src="/code.js"></script>
+<head>
+  <title>Details</title>
+  <meta charset="utf-8">
 
-        <!-- Bootstrap -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <script type="text/javascript" src="/code.js"></script>
 
-        <!-- Font Awesome Icons -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    </head>
+  <!-- Bootstrap -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <body>
-        <div class="header">
-          <nav class="navbar navbar-expand-sm bg-custom navbar-custom justify-content-center fixed-top">
-            <a class="navbar-brand" href="/">
-              <img src="/images/logo.png" alt="logo" style="width: 40px;">
-            </a>
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="/">Home</a>
-                </li>
-  
-                <li class="nav-item">
-                  <a class="nav-link" href="/products">Products</a>
-                </li>  
-              </ul>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/login"><i class="fas fa-user"></i></a>
-                </li>
-  
-                <li class="nav-item">
-                <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
-                </li> 
-              </ul>
-            </nav>
-            <br><br><br>
-        </div>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
 
-        <div class="main-container">
-          <h1 th:text="'Details for: ' + ${product.name}">Details for: </h1>
+<body>
+  <div class="header">
+    <nav class="navbar navbar-expand-sm bg-custom navbar-custom justify-content-center fixed-top">
+      <a class="navbar-brand" href="/">
+        <img src="/images/logo.png" alt="logo" style="width: 40px;">
+      </a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
 
-          <table class="details-table">     
-            <tr>
-              <td class="detail-cell" style="width: 60px;">ID</td>
-              <td class="detail-cell" th:text="${product.id}"></td>
-            </tr>
-            
-            <tr>
-                <td class="detail-cell" style="width: 60px;">Type</td>
-                <td class="detail-cell" th:text="${product.type}"></td>
-            </tr>
+        <li class="nav-item">
+          <a class="nav-link" href="/products">Products</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/login"><i class="fas fa-user"></i></a>
+        </li>
 
-            <tr>
-                <td class="detail-cell" style="width: 60px;">Price</td>
-                <td class="detail-cell" th:text="'€' + ${product.price}"></td>
-            </tr>
+        <li class="nav-item">
+          <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+      </ul>
+    </nav>
+    <br><br><br>
+  </div>
 
-            <tr>
-                <td class="detail-cell" style="width: 60px;">Details</td>
-                <td class="detail-cell" th:text="${product.details}"></td>
-            </tr>
-          </table>
-        
-          <div class="details-buttons">
-            <a><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a>
-            <a href="/products"><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Go Back</button></a>
-          </div>
-        </div>
-    </body>
+  <div class="main-container">
+    <h1 th:text="'Details for: ' + ${product.name}">Details for: </h1>
+
+    <table class="details-table">
+      <tr>
+        <td class="detail-cell" style="width: 60px;">ID</td>
+        <td class="detail-cell" th:text="${product.id}"></td>
+      </tr>
+
+      <tr>
+        <td class="detail-cell" style="width: 60px;">Type</td>
+        <td class="detail-cell" th:text="${product.type}"></td>
+      </tr>
+
+      <tr>
+        <td class="detail-cell" style="width: 60px;">Price</td>
+        <td class="detail-cell" th:text="'€' + ${product.price}"></td>
+      </tr>
+
+      <tr>
+        <td class="detail-cell" style="width: 60px;">Details</td>
+        <td class="detail-cell" th:text="${product.details}"></td>
+      </tr>
+    </table>
+
+    <div class="details-buttons">
+      <a><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a>
+      <a href="/products"><button class="prd-btn btn btn-sm btn-success btn-block" type="button">Go Back</button></a>
+    </div>
+  </div>
+</body>
+
 </html>

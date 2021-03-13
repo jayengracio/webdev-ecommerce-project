@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Home</title>
     <meta charset="utf-8">
@@ -15,8 +16,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
+
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-sm bg-custom navbar-custom justify-content-center fixed-top">
@@ -38,7 +41,7 @@
                 </li>
 
                 <li class="nav-item">
-                <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+                    <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
                 </li>
             </ul>
         </nav>
@@ -61,19 +64,19 @@
         <div class="products">
             <table id="productTable" class="product-table">
                 <thead>
-                <tr>
-                    <th class="prod-cell">Type</th>
-                    <th class="prod-cell">Name</th>
-                    <th class="prod-cell">Price</th>
-                </tr>
+                    <tr>
+                        <th class="prod-cell">Type</th>
+                        <th class="prod-cell">Name</th>
+                        <th class="prod-cell">Price</th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="product : ${user.orders}" th:id="|row_${product.id}">
-                    <td class="prod-cell" th:text="${product.type}"></td>
-                    <td class="prod-cell" th:text="${product.name}"></td>
-                    <td class="prod-cell" th:text="'€' + ${product.price}"></td>
-                </tr>
+                    <tr th:each="product : ${user.orders}" th:id="|row_${product.id}">
+                        <td class="prod-cell" th:text="${product.type}"></td>
+                        <td class="prod-cell" th:text="${product.name}"></td>
+                        <td class="prod-cell" th:text="'€' + ${product.price}"></td>
+                    </tr>
                 </tbody>
             </table>
 
@@ -81,4 +84,5 @@
 
     </div>
 </body>
+
 </html>
