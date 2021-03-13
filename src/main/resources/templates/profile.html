@@ -45,11 +45,42 @@
         <br><br><br>
     </div>
 
-    <div class="main-container">
-        <div class="log-btns text-center">
-            <a href="/logout"><button type="submit" class="login-btn btn btn-success btn-block">Log Out</button></a>
-            <a href="/orders"><button type="button" class="btn btn-secondary btn-block btn-sm">View Order History</button></a>
+    <div class="main-container" style="width: 75%; margin: auto;">
+        <div class="profile-card">
+            <img src="/images/img_avatar.png" alt="Avatar" style="width:100%">
+            <div class="container">
+                <h4><b th:text="'Welcome, ' + ${user.username} + '!'"></b></h4>
+            </div>
+            <div class="log-btns text-center">
+                <a href="/logout"><button type="submit" class="login-btn btn btn-success btn-block">Log Out</button></a>
+            </div>
         </div>
+        <div class="order-history">
+            <h1 th:text="'Order History: ' + ${user.username}"></h1>
+        </div>
+        <div class="products">
+            <table id="productTable" class="product-table">
+                <thead>
+                <tr>
+                    <th class="prod-cell">Order</th>
+                    <th class="prod-cell">Type</th>
+                    <th class="prod-cell">Name</th>
+                    <th class="prod-cell">Price</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="product : ${user.orders}" th:id="|row_${product.id}">
+                    <td class="prod-cell" th:text="${product.type}"></td>
+                    <td class="prod-cell" th:text="${product.name}"></td>
+                    <td class="prod-cell" th:text="'€' + ${product.price}"></td>
+                    <td class="prod-cell" th:text="${}"
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 </body>
 </html>

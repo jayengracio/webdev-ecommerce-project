@@ -37,13 +37,15 @@ public class MainController {
     @GetMapping("/login")
     public String login(Model model) {
         if (loggedIn) {
-            model.addAttribute("user", loggedUser);
+            model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
             if (loggedUser.isOwner()) return "owners.html";
             else return "profile.html";
         }
 
-        else model.addAttribute("user", userRepository.findById(1).get());
-        return "login.html";
+        else {
+            model.addAttribute("user", userRepository.findById(1).get());
+            return "login.html";
+        }
     }
 
     @PostMapping("/login")
@@ -81,11 +83,6 @@ public class MainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @GetMapping("/profile")
-    public String profile() {
-        return "profile.html";
     }
 
     @GetMapping("/register")
