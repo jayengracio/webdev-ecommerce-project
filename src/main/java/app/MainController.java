@@ -153,7 +153,7 @@ public class MainController {
         if (loggedIn) {
             model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
             return "cart.html";
-        } else return "no.html";
+        } else return "cart.html";
     }
 
     @GetMapping("/details/{id}")
@@ -171,6 +171,17 @@ public class MainController {
 
     @GetMapping("/purchase")
     public String purchase() {
+        User user = userRepository.findById(loggedUser.getId()).get();
+        List<Product> cart = user.getCart();
+        user.getOrders().addAll(cart);
+        user.getCart().clear();
+        userRepository.save(user);
         return "purchase.html";
+    }
+
+    @GetMapping("/orders")
+    public String orders(Model model) {
+        model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
+        return "orders.html";
     }
 }

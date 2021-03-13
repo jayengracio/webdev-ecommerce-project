@@ -28,6 +28,9 @@ public class User {
     @ManyToMany(cascade = {CascadeType.ALL})
     List<Product> cart;
 
+    @ManyToMany(cascade = {CascadeType.ALL})
+    List<Product> orders;
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
@@ -66,5 +69,13 @@ public class User {
 
     public void setCart(List<Product> cart) {
         this.cart = cart;
+    }
+
+    public List<Product> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Product> orders) {
+        this.orders = orders;
     }
 }
