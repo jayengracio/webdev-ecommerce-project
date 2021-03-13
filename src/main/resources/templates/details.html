@@ -50,7 +50,12 @@
         <div class="main-container">
           <h1 th:text="'Details for: ' + ${product.name}">Details for: </h1>
 
-          <table class="details-table">                
+          <table class="details-table">     
+            <tr>
+              <td class="detail-cell" style="width: 60px;">ID</td>
+              <td class="detail-cell" th:text="${product.id}"></td>
+            </tr>
+            
             <tr>
                 <td class="detail-cell" style="width: 60px;">Type</td>
                 <td class="detail-cell" th:text="${product.type}"></td>
@@ -58,7 +63,7 @@
 
             <tr>
                 <td class="detail-cell" style="width: 60px;">Price</td>
-                <td class="detail-cell" th:text="${product.price}"></td>
+                <td class="detail-cell" th:text="'€' + ${product.price}"></td>
             </tr>
 
             <tr>

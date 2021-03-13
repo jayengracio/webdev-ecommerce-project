@@ -48,7 +48,7 @@
       </div>
 
       <div class="main-container">
-        <h1 th:text="'Checkout cart: ' + ${user.username}">Cart for: </h1>
+        <h1 th:text="'Checkout Cart: ' + ${user.username}">Cart for: </h1>
 
         <div class="cart">
         <table id="cartTable" class="cart-table">
@@ -72,6 +72,7 @@
             </tr>
           </tbody>
         </table> 
+        <a href="/checkout"><button class="checkout-btn" type="button">Proceed to Checkout</button></a>
       </div>
       </div>
     </body>

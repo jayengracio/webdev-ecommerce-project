@@ -1,3 +1,7 @@
+.container-fluid {
+    padding-bottom: 50px;
+}
+
 .header {
     padding-bottom: 30px;
 }
@@ -43,6 +47,7 @@ html body {
 
 .products {
     width: 100%;
+    padding-bottom: 50px;
 }
 
 .searchDiv {
@@ -146,3 +151,76 @@ html body {
 .main-container .owners-form .form input{
     float: right;
 }
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%;
+    flex: 25%;
+}
+
+.col-50 {
+    -ms-flex: 50%;
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%;
+    flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.ckout-container {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+.ckout-container input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.ckout-container label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.ckout-container .icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+.checkout-btn {
+    background-color: #45a049;
+    color: white;
+    padding: 12px;
+    border: none;
+    width: 20%;
+    margin: auto;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.ckout-container span.price {
+    float: right;
+    color: grey;
+}
+
