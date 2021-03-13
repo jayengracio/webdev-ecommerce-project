@@ -45,9 +45,10 @@
     <br><br><br>
 </div>
 
+<div class="container-fluid">
 <div class="row">
     <div class="col-75">
-        <div class="container">
+        <div class="ckout-container">
             <form action="/action_page.php">
                 <div class="row">
                     <div class="col-50">
@@ -101,7 +102,7 @@
     </div>
 
     <div class="col-25">
-        <div class="container">
+        <div class="ckout-container">
             <table id="cartTable" class="cart-table">
                 <thead>
                     <tr>
@@ -117,7 +118,7 @@
                     <tr th:each="product : ${user.cart}" th:id="|row_${product.id}|">
                         <td class="cart-cell" th:text="${product.id}"></td>
                         <td class="cart-cell" th:text="${product.name}"></td>
-                        <td class="cart-cell" th:text="${product.price}"></td>
+                        <td class="cart-cell" th:text="'€' + ${product.price}"></td>
                         <td class="cart-cell"><a  th:href="@{/details/{id}(id=${product.id})}"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
                         <td class="cart-cell"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button" th:onclick="|removeProduct(${product.id})|">Remove</button></td>
                     </tr>
@@ -125,6 +126,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 
 </body>

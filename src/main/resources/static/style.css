@@ -1,3 +1,7 @@
+.container-fluid {
+    padding-bottom: 50px;
+}
+
 .header {
     padding-bottom: 30px;
 }
@@ -43,6 +47,7 @@ html body {
 
 .products {
     width: 100%;
+    padding-bottom: 50px;
 }
 
 .searchDiv {
@@ -176,14 +181,14 @@ html body {
     padding: 0 16px;
 }
 
-.container {
+.ckout-container {
     background-color: #f2f2f2;
     padding: 5px 20px 15px 20px;
     border: 1px solid lightgrey;
     border-radius: 3px;
 }
 
-input[type=text] {
+.ckout-container input[type=text] {
     width: 100%;
     margin-bottom: 20px;
     padding: 12px;
@@ -191,12 +196,12 @@ input[type=text] {
     border-radius: 3px;
 }
 
-label {
+.ckout-container label {
     margin-bottom: 10px;
     display: block;
 }
 
-.icon-container {
+.ckout-container .icon-container {
     margin-bottom: 20px;
     padding: 7px 0;
     font-size: 24px;
@@ -214,7 +219,7 @@ label {
     font-size: 17px;
 }
 
-span.price {
+.ckout-container span.price {
     float: right;
     color: grey;
 }
