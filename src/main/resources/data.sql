@@ -1,0 +1,20 @@
+INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Apple', 10, 'A red apple', 10.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Laptop', 10, 'A white laptop', 500.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Banana', 10, 'A banana', 3.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Grapes', 20, 'Some grapes', 3.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Computer', 13, 'A computer', 899.99);
+INSERT INTO Product(type, name, stock, details, price) VALUES('book', 'Harry Potter', 9, 'A Harry Potter Book', 40.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Donut', 132, 'A donut', 9.50);
+INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Pizza', 24, 'A scuffed pizza', 14.0);
+INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Keyboard', 15, 'A broken keyboard', 55.0);
+INSERT INTO Product(type, name, stock, details, price) VALUES('film', 'Star Wars', 30, 'The Star Wars trilogy collection', 50.0);
+INSERT INTO Product(type, name, stock, details, price) VALUES('book', 'Lord of the Rings', 70, 'The first Lord of the Rings book', 35.99);
+INSERT INTO Product(type, name, stock, details, price) VALUES('music', 'After Hours', 45, 'His latest album from 2020', 45.50);
+INSERT INTO Product(type, name, stock, details, price) VALUES('video-games', 'Call of Duty', 99, 'The 2021 Call of Duty game', 59.99);
+INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Macbook Air', 70, 'An actual scam', 1100.00);
+INSERT INTO Product(type, name, stock, details, price) VALUES('video-games', 'Red Dead Redemption 2', 20, 'Game of the Year 2018', 59.99);
+
+INSERT INTO User(username, password, owner) VALUES ('Guest', '', false);
+INSERT INTO User(username, password, owner) VALUES ('owner', 'password', true);
+INSERT INTO User(username, password, owner) VALUES ('Phil', '1234pass', false);
+INSERT INTO User(username, password, owner) VALUES ('Joseph', 'w0w', false);
