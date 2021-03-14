@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" type="image/png" href="/images/logo.png">
     <title>Product Details</title>
     <meta charset="utf-8">
 
@@ -72,6 +73,9 @@
         <tr>
             <td class="detail-cell" style="width: 60px;">Details</td>
             <td class="detail-cell" th:text="${product.details}"></td>
+        </tr>
+        <tr>
+            <td class="detail-cell" colspan="2"><img th:src="@{${'/images/' + product.name + '.png'}}" alt="Product Image"></td>
         </tr>
     </table>
 

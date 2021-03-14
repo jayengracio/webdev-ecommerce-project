@@ -9,7 +9,7 @@ INSERT INTO Product(type, name, stock, details, price) VALUES('food', 'Pizza', 2
 INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Keyboard', 15, 'A broken keyboard', 55.0);
 INSERT INTO Product(type, name, stock, details, price) VALUES('film', 'Star Wars', 30, 'The Star Wars trilogy collection', 50.0);
 INSERT INTO Product(type, name, stock, details, price) VALUES('book', 'Lord of the Rings', 70, 'The first Lord of the Rings book', 35.99);
-INSERT INTO Product(type, name, stock, details, price) VALUES('music', 'The Weeknd: After Hours', 45, 'His latest album from 2020', 45.50);
+INSERT INTO Product(type, name, stock, details, price) VALUES('music', 'After Hours', 45, 'His latest album from 2020', 45.50);
 INSERT INTO Product(type, name, stock, details, price) VALUES('video-games', 'Call of Duty', 99, 'The 2021 Call of Duty game', 59.99);
 INSERT INTO Product(type, name, stock, details, price) VALUES('electronics', 'Macbook Air', 70, 'An actual scam', 1100.00);
 INSERT INTO Product(type, name, stock, details, price) VALUES('video-games', 'Red Dead Redemption 2', 20, 'Game of the Year 2018', 59.99);
