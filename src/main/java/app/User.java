@@ -1,17 +1,16 @@
 package app;
 
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 @Entity
 public class User {
+    @ManyToMany(cascade = {CascadeType.ALL})
+    List<Product> cart;
+
+    @ManyToMany(cascade = {CascadeType.ALL})
+    List<Product> orders;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -24,12 +23,6 @@ public class User {
 
     @Column
     private boolean owner;
-
-    @ManyToMany(cascade = { CascadeType.ALL })
-    List<Product> cart;
-
-    @ManyToMany(cascade = { CascadeType.ALL })
-    List<Product> orders;
 
     public User(String username, String password) {
         this.username = username;
@@ -91,5 +84,5 @@ public class User {
     public void setOrders(List<Product> orders) {
         this.orders = orders;
     }
-    
+
 }

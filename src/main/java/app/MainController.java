@@ -1,20 +1,14 @@
 package app;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -48,9 +42,7 @@ public class MainController {
                 return "/owners";
             else
                 return "profile.html";
-        }
-
-        else {
+        } else {
             model.addAttribute("user", userRepository.findById(1).get());
             return "login.html";
         }
@@ -58,7 +50,7 @@ public class MainController {
 
     @PostMapping("/login")
     public String loggedIn(HttpServletResponse response, @RequestParam String username, @RequestParam String password,
-            Model model) {
+                           Model model) {
         if (loggedIn)
             model.addAttribute("user", loggedUser);
         else
@@ -108,7 +100,7 @@ public class MainController {
 
     @PostMapping("/register")
     public void registerUser(HttpServletResponse response, @RequestParam String username,
-            @RequestParam String password) {
+                             @RequestParam String password) {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setPassword(password);
@@ -141,7 +133,8 @@ public class MainController {
     }
 
     @PostMapping("/product/add")
-    public @ResponseBody Product addProduct(@RequestBody Product product) {
+    public @ResponseBody
+    Product addProduct(@RequestBody Product product) {
         productRepository.save(product);
         newProducts.add(product);
         return product;
@@ -168,7 +161,8 @@ public class MainController {
     }
 
     @GetMapping("/cart/remove")
-    public @ResponseBody Integer removeProduct(@RequestParam Integer id) {
+    public @ResponseBody
+    Integer removeProduct(@RequestParam Integer id) {
         User user = userRepository.findById(loggedUser.getId()).get();
         Product product = productRepository.findById(id).get();
         int stock = product.getStock() + 1;
@@ -185,9 +179,7 @@ public class MainController {
             model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
             if (!userRepository.findById(loggedUser.getId()).get().getCart().isEmpty()) {
                 return "cart.html";
-            }
-
-            else {
+            } else {
                 return "empty.html";
             }
 
@@ -240,11 +232,11 @@ public class MainController {
 
     @PostMapping("/edit/product")
     public void editProduct(HttpServletResponse response, @RequestParam(required = false) String details,
-            @RequestParam(required = false) String price, @RequestParam(required = false) String stock) {
+                            @RequestParam(required = false) Double price, @RequestParam(required = false) int stock) {
         Product product = tempProduct;
         product.setDetails(details);
-        product.setPrice(Double.parseDouble(price));
-        product.setStock(Integer.parseInt(stock));
+        product.setPrice(price);
+        product.setStock(stock);
         productRepository.save(product);
 
         try {
@@ -260,17 +252,16 @@ public class MainController {
     }
 
     @GetMapping("/hide/product")
-    public @ResponseBody Integer hideProduct(@RequestParam Integer id) {
+    public @ResponseBody
+    Integer hideProduct(@RequestParam Integer id) {
         return id;
     }
 
     @GetMapping("/view/orders")
     public String viewOrder(Model model) {
         User guest = userRepository.findById(1).get();
-        User owner = userRepository.findById(2).get();
         List<User> userList = userRepository.findAll();
         userList.remove(guest);
-        userList.remove(owner);
 
         model.addAttribute("users", userList);
         return "view_order.html";
@@ -290,4 +281,5 @@ public class MainController {
     public String stock() {
         return "stock.html";
     }
+
 }

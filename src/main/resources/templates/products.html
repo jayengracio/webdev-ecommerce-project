@@ -3,85 +3,91 @@
 <html lang="en">
 
 <head>
-  <title>View Products</title>
-  <meta charset="utf-8">
+    <title>View Products</title>
+    <meta charset="utf-8">
 
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="/code.js"></script>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="/code.js" type="text/javascript"></script>
 
-  <!-- Bootstrap -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap -->
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Font Awesome Icons -->
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" rel="stylesheet">
 </head>
 
 <body>
-  <div class="header">
+<div class="header">
     <nav class="navbar navbar-expand-sm bg-custom navbar-custom justify-content-center fixed-top">
-      <a class="navbar-brand" href="/">
-        <img src="/images/logo.svg" alt="logo" style="width: 40px;">
-      </a>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+        <a class="navbar-brand" href="/">
+            <img alt="logo" src="/images/logo.svg" style="width: 40px;">
+        </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/products">Products</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/login"><i class="fas fa-user"></i></a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products">Products</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/login"><i class="fas fa-user"></i></a>
+            </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
-        </li>
-      </ul>
+            <li class="nav-item">
+                <a class="nav-link" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+            </li>
+        </ul>
     </nav>
     <br><br><br>
-  </div>
+</div>
 
-  <div class="searchDiv">
+<div class="searchDiv">
     <h1>Products</h1>
-    <input type="text" id="searchType" onkeyup="filterByType()" placeholder="Search by type...">
-    <input type="text" id="searchName" onkeyup="filterByName()" placeholder="Search by name...">
-  </div>
+    <input id="searchType" onkeyup="filterByType()" placeholder="Search by type..." type="text">
+    <input id="searchName" onkeyup="filterByName()" placeholder="Search by name..." type="text">
+</div>
 
-  <div class="products">
-    <table id="productTable" class="product-table">
-      <thead>
+<div class="products">
+    <table class="product-table" id="productTable">
+        <thead>
         <tr>
-          <th class="prod-cell">Type</th>
-          <th class="prod-cell">Name</th>
-          <th class="prod-cell">Price</th>
-          <th class="prod-cell">Stock</th>
-          <th class="prod-cell" style="width: 130px"></th>
-          <th class="prod-cell" style="width: 170px"></th>
+            <th class="prod-cell">Type</th>
+            <th class="prod-cell">Name</th>
+            <th class="prod-cell">Price</th>
+            <th class="prod-cell">Stock</th>
+            <th class="prod-cell" style="width: 130px"></th>
+            <th class="prod-cell" style="width: 170px"></th>
         </tr>
-      </thead>
+        </thead>
 
-      <tbody>
+        <tbody>
         <tr th:each="product : ${products}" th:id="|row_${product.id}">
-          <td class="prod-cell" th:text="${product.type}"></td>
-          <td class="prod-cell" th:text="${product.name}"></td>
-          <td class="prod-cell" th:text="'€' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></td>
-          <td class="prod-cell" th:text="${product.stock}"></td>
-          <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button
-                class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
-          <td class="prod-cell"><a th:href="@{/products/addtocart/{id}(id=${product.id})}"><button
-                class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart</button></a></td>
+            <td class="prod-cell" th:text="${product.type}"></td>
+            <td class="prod-cell" th:text="${product.name}"></td>
+            <td class="prod-cell" th:text="'€' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></td>
+            <td class="prod-cell" th:text="${product.stock}"></td>
+            <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}">
+                <button
+                        class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details
+                </button>
+            </a></td>
+            <td class="prod-cell"><a th:href="@{/products/addtocart/{id}(id=${product.id})}">
+                <button
+                        class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Add To Cart
+                </button>
+            </a></td>
         </tr>
-      </tbody>
+        </tbody>
     </table>
-  </div>
+</div>
 
 </body>
 
