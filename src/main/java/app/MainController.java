@@ -122,7 +122,7 @@ public class MainController {
     }
 
     @GetMapping("/owners")
-    public String owners(Model productModel){
+    public String owners(Model productModel) {
         productModel.addAttribute("newProduct", productRepository);
         return "owners.html";
     }
@@ -133,11 +133,11 @@ public class MainController {
 
         if (loggedIn)
             userModel.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
-            if (loggedUser.isOwner())
+        if (loggedUser.isOwner())
             return "products_owner.html";
         else
             userModel.addAttribute("user", userRepository.findById(1).get());
-            return "products.html";
+        return "products.html";
     }
 
     @PostMapping("/product/add")
@@ -178,7 +178,14 @@ public class MainController {
     public String cart(Model model) {
         if (loggedIn) {
             model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
-            return "cart.html";
+            if (!userRepository.findById(loggedUser.getId()).get().getCart().isEmpty()) {
+                return "cart.html";
+            }
+
+            else {
+                return "empty.html";
+            }
+
         } else
             return "/forbid";
     }
@@ -191,8 +198,17 @@ public class MainController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(Model model) {
+    public String checkout(Model model, Model total) {
         model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
+
+        List<Product> products = userRepository.findById(loggedUser.getId()).get().getCart();
+        double sum = 0;
+
+        for (Product product : products) {
+            sum += product.getPrice();
+        }
+
+        total.addAttribute("total", sum);
         return "checkout.html";
     }
 
@@ -206,22 +222,17 @@ public class MainController {
         return "purchase.html";
     }
 
-    @GetMapping("/orders")
-    public String orders(Model model) {
-        model.addAttribute("user", userRepository.findById(loggedUser.getId()).get());
-        return "orders.html";
-    }
-
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
         model.addAttribute("product", productRepository.findById(id).get());
 
-        if (!loggedUser.isOwner()) return "forbid.html";
+        if (!loggedUser.isOwner())
+            return "forbid.html";
         else
             tempProduct = productRepository.findById(id).get();
-            return "edit.html";
+        return "edit.html";
     }
-    
+
     @PostMapping("/edit/product")
     public void editProduct(HttpServletResponse response, @RequestParam(required = false) String details,
             @RequestParam(required = false) String price, @RequestParam(required = false) String stock) {
@@ -244,7 +255,29 @@ public class MainController {
     }
 
     @GetMapping("/hide/product")
-    public @ResponseBody Integer hideProduct(@RequestParam Integer id) {        
+    public @ResponseBody Integer hideProduct(@RequestParam Integer id) {
         return id;
+    }
+
+    @GetMapping("/view/orders")
+    public String viewOrder(Model model) {
+        User guest = userRepository.findById(1).get();
+        User owner = userRepository.findById(2).get();
+        List<User> userList = userRepository.findAll();
+        userList.remove(guest);
+        userList.remove(owner);
+
+        model.addAttribute("users", userList);
+        return "view_order.html";
+    }
+
+    @GetMapping("/orders/{id}")
+    public String orders(@PathVariable("id") int id, Model model) {
+        model.addAttribute("user", userRepository.findById(id).get());
+
+        if (!loggedUser.isOwner())
+            return "forbid.html";
+
+        return "orders.html";
     }
 }

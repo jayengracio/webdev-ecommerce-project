@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Your Cart</title>
+  <title>View Orders</title>
   <meta charset="utf-8">
 
   <link rel="stylesheet" type="text/css" href="/style.css">
@@ -49,36 +49,26 @@
     <br><br><br>
   </div>
 
-  <div class="main-container">
-    <h1 th:text="'Checkout Cart: ' + ${user.username}">Cart for: </h1>
+  <div class="user">
+    <table id="userTable" class="user-table">
+      <thead>
+        <tr>
+          <th class="user-cell">ID</th>
+          <th class="user-cell">Customer</th>
+          <th class="user-cell"></th>
+        </tr>
+      </thead>
 
-    <div class="cart">
-      <table id="cartTable" class="cart-table">
-        <thead>
-          <tr>
-            <th class="cart-cell">ID</th>
-            <th class="cart-cell">Name</th>
-            <th class="cart-cell">Price</th>
-            <th class="cart-cell" style="width: 130px"></th>
-            <th class="cart-cell" style="width: 170px"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr th:each="product : ${user.cart}" th:id="|row_${product.id}|">
-            <td class="cart-cell" th:text="${product.id}"></td>
-            <td class="cart-cell" th:text="${product.name}"></td>
-            <td class="cart-cell" th:text="${product.price}"></td>
-            <td class="cart-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button
-                  class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>
-            <td class="cart-cell"><button class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button"
-                th:onclick="|removeProduct(${product.id})|">Remove</button></td>
-          </tr>
-        </tbody>
-      </table>
-      <a href="/checkout"><button class="prd-btn btn btn-lg btn-success" type="button">Proceed to Checkout</button></a>
-    </div>
+      <tbody>
+        <tr th:each="user : ${users}" th:id="|row_${user.id}">
+          <td class="user-cell" th:text="${user.id}"></td>
+          <td class="user-cell" th:text="${user.username}"></td>
+          <td class="user-cell"><a th:href="@{/orders/{id}(id=${user.id})}"><button class="user-button prd-btn btn btn-sm btn-success view-btn" type="button">View Orders</button></a></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </body>
 
 </html>
