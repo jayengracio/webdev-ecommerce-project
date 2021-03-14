@@ -150,7 +150,7 @@ html body {
 .owners-form {
     margin: auto;
     float: right;
-    width: 50%;
+    width: 40%;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: #D0B8AC;
@@ -158,13 +158,7 @@ html body {
 }
 
 .owners-form .owner-label {
-    padding: 10px;
-}
-
-.owners-form .owner-input {
-    border-radius: 7px;
-    border: 1px solid black;
-    padding: 10px;
+    font-size: 18px;
 }
 
 .main-container .profile-card {
