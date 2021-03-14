@@ -149,17 +149,22 @@ public class MainController {
 
     @GetMapping("/products/addtocart/{id}")
     public void addToCart(@PathVariable("id") int id, Model model, HttpServletResponse response) throws IOException {
-        if (loggedIn) {
-            Product product = productRepository.findById(id).get();
-            User user = userRepository.findById(loggedUser.getId()).get();
-            int stock = product.getStock() - 1;
-            user.cart.add(product);
-            product.setStock(stock);
-            userRepository.save(user);
-            productRepository.save(product);
-            response.sendRedirect("/products");
-        } else
-            response.sendRedirect("/forbid");
+        Product product = productRepository.findById(id).get();
+        int stock = product.getStock();
+
+        if (stock <= 0) {
+            response.sendRedirect("/stock");
+        } else {
+            if (loggedIn) {
+                User user = userRepository.findById(loggedUser.getId()).get();
+                user.cart.add(product);
+                product.setStock(stock - 1);
+                userRepository.save(user);
+                productRepository.save(product);
+                response.sendRedirect("/products");
+            } else
+                response.sendRedirect("/forbid");
+        }
     }
 
     @GetMapping("/cart/remove")
@@ -279,5 +284,10 @@ public class MainController {
             return "forbid.html";
 
         return "orders.html";
+    }
+
+    @GetMapping("/stock")
+    public String stock() {
+        return "stock.html";
     }
 }
