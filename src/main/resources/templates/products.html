@@ -72,7 +72,7 @@
         <tr th:each="product : ${products}" th:id="|row_${product.id}">
           <td class="prod-cell" th:text="${product.type}"></td>
           <td class="prod-cell" th:text="${product.name}"></td>
-          <td class="prod-cell" th:text="'€' + ${product.price}"></td>
+          <td class="prod-cell" th:text="'€' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></td>
           <td class="prod-cell" th:text="${product.stock}"></td>
           <td class="prod-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button
                 class="prod-button prd-btn btn btn-sm btn-success btn-block" type="button">Details</button></a></td>

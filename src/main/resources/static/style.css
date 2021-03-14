@@ -2,9 +2,6 @@
     padding-bottom: 50px;
 }
 
-.btn-success {
-}
-
 .header {
     padding-bottom: 30px;
 }
@@ -156,7 +153,7 @@ html body {
     width: 50%;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: #212121;
+    background-color: #D0B8AC;
     padding: 20px;
 }
 
@@ -171,6 +168,7 @@ html body {
 }
 
 .main-container .profile-card {
+    border-radius: 15px;
     background-color: #D0B8AC;
     width: 35%;
     margin: auto;
@@ -283,20 +281,21 @@ html body {
 }
 
 .user .user-table {
+    border-radius: 15px;
     width: 35%;
     margin: auto;
 }
 
 .user .user-table th {
-    background-color: #191919;
+    background-color: #D0B8AC;
 }
 
 .user .user-table td {
-    background-color: #212121;
+    background-color: #D0B8AC;
 }
 
 .user .user-table .user-cell {
-    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
     padding-top: 1.5%;
     padding-bottom: 1.5%;
     padding-left: 10px;

@@ -63,7 +63,8 @@
         <tr th:each="user : ${users}" th:id="|row_${user.id}">
           <td class="user-cell" th:text="${user.id}"></td>
           <td class="user-cell" th:text="${user.username}"></td>
-          <td class="user-cell"><a th:href="@{/orders/{id}(id=${user.id})}"><button class="user-button prd-btn btn btn-sm btn-success view-btn" type="button">View Orders</button></a></td>
+          <td class="user-cell"><a th:href="@{/orders/{id}(id=${user.id})}"><button
+                class="user-button prd-btn btn btn-sm btn-success view-btn" type="button">View Orders</button></a></td>
         </tr>
       </tbody>
     </table>

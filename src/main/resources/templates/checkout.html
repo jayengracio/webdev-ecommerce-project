@@ -148,7 +148,8 @@
                             </div>
 
                         </div>
-                        <input type="submit" value="Confirm Purchase" class="ckout-btn btn btn-success btn-block" formaction="/purchase">
+                        <input type="submit" value="Confirm Purchase" class="ckout-btn btn btn-success btn-block"
+                            formaction="/purchase">
                     </form>
                 </div>
             </div>
@@ -170,7 +171,7 @@
                             <tr th:each="product : ${user.cart}" th:id="|row_${product.id}|">
                                 <td class="cart-cell" th:text="${product.id}"></td>
                                 <td class="cart-cell" th:text="${product.name}"></td>
-                                <td class="cart-cell" th:text="'€' + ${product.price}"></td>
+                                <td class="cart-cell" th:text="'€' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></td>
                                 <td class="cart-cell"><a th:href="@{/details/{id}(id=${product.id})}"><button
                                             class="btn btn-sm btn-success btn-block ckout-btn"
                                             type="button">Details</button></a></td>
@@ -179,7 +180,7 @@
                             </tr>
 
                             <tr>
-                                <td colspan="5" class="total-cell" th:text="'Total: €' + ${total}"></td>
+                                <td colspan="5" class="total-cell" th:text="'Total: €' + ${#numbers.formatDecimal(total, 0, 'COMMA', 2, 'POINT')}"></td>
                             </tr>
                         </tbody>
                     </table>

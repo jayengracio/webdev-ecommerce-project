@@ -50,38 +50,39 @@
 
     <div class="main-container" style="width: 75%; margin: auto;">
 
-            <div class="profile-card">
-                <div class="container">
-                    <h4><b th:text="'Welcome, ' + ${user.username} + '!'"></b></h4>
-                </div>
-                <div class="log-btns text-center">
-                    <a href="/logout"><button type="submit" class="login-btn btn btn-success btn-block">Log Out</button></a>
-                    <a href="/view/orders"><button type="submit" class="login-btn btn btn-success btn-block">View Orders</button></a>
-                    <a href="/"><button type="submit" class="login-btn btn btn-success btn-block">Change Orders</button></a>
-                </div>
+        <div class="profile-card">
+            <div class="container">
+                <h4><b th:text="'Welcome, ' + ${user.username} + '!'"></b></h4>
             </div>
+            <div class="log-btns text-center">
+                <a href="/logout"><button type="submit" class="login-btn btn btn-success btn-block">Log Out</button></a>
+                <a href="/view/orders"><button type="submit" class="login-btn btn btn-success btn-block">View
+                        Orders</button></a>
+                <a href="/"><button type="submit" class="login-btn btn btn-success btn-block">Change Orders</button></a>
+            </div>
+        </div>
 
-<!--            <div class="new-products-added">-->
-<!--                <table id="productTable" class="new-product-table">-->
-<!--                    <thead>-->
-<!--                    <tr>-->
-<!--                        <th class="prod-cell">Type</th>-->
-<!--                        <th class="prod-cell">Name</th>-->
-<!--                        <th class="prod-cell">Price</th>-->
-<!--                        <th class="prod-cell">Stock</th>-->
-<!--                    </tr>-->
-<!--                    </thead>-->
+        <!--            <div class="new-products-added">-->
+        <!--                <table id="productTable" class="new-product-table">-->
+        <!--                    <thead>-->
+        <!--                    <tr>-->
+        <!--                        <th class="prod-cell">Type</th>-->
+        <!--                        <th class="prod-cell">Name</th>-->
+        <!--                        <th class="prod-cell">Price</th>-->
+        <!--                        <th class="prod-cell">Stock</th>-->
+        <!--                    </tr>-->
+        <!--                    </thead>-->
 
-<!--                    <tbody>-->
-<!--                    <tr th:each="product : ${newProduct}" th:id="|row_${product.value.id}">-->
-<!--                        <td class="prod-cell" th:text="${product.value.type}"></td>-->
-<!--                        <td class="prod-cell" th:text="${product.value.name}"></td>-->
-<!--                        <td class="prod-cell" th:text="'€' + ${product.value.price}"></td>-->
-<!--                        <td class="prod-cell" th:text="${product.value.stock}"></td>-->
-<!--                    </tr>-->
-<!--                    </tbody>-->
-<!--                </table>-->
-<!--            </div>-->
+        <!--                    <tbody>-->
+        <!--                    <tr th:each="product : ${newProduct}" th:id="|row_${product.value.id}">-->
+        <!--                        <td class="prod-cell" th:text="${product.value.type}"></td>-->
+        <!--                        <td class="prod-cell" th:text="${product.value.name}"></td>-->
+        <!--                        <td class="prod-cell" th:text="'€' + ${product.value.price}"></td>-->
+        <!--                        <td class="prod-cell" th:text="${product.value.stock}"></td>-->
+        <!--                    </tr>-->
+        <!--                    </tbody>-->
+        <!--                </table>-->
+        <!--            </div>-->
 
         <div class="owners-form">
             <form>

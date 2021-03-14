@@ -65,7 +65,7 @@
 
       <tr>
         <td class="detail-cell" style="width: 60px;">Price</td>
-        <td class="detail-cell" th:text="'€' + ${product.price}"></td>
+        <td class="detail-cell" th:text="'€' + ${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')}"></td>
       </tr>
 
       <tr>
