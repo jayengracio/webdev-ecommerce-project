@@ -4,6 +4,8 @@
 
 
 # How to run
-Project built using Maven and Spring Boot
-- mvn clean
-- mvn compile spring-boot:run
+Run through the terminal:
+ - mvn clean
+ - mvn compile spring-boot:run
+
+Then open up [localhost](http://localhost:8080/) in your browser.
