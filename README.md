@@ -1,6 +1,6 @@
 # Team7
-[Report Link](https://gitlab.com/comp30860/2021/team7/-/blob/master/Report.pdf)
-[Wireframe Link](https://gitlab.com/comp30860/2021/team7/-/blob/master/Wireframe%20Design.pdf)
+[Report Link](https://github.com/jayengracio/Web-Dev-Project/blob/master/Report.pdf)
+[Wireframe Link](https://github.com/jayengracio/Web-Dev-Project/blob/master/Wireframe%20Design.pdf)
 
 
 # How to run
